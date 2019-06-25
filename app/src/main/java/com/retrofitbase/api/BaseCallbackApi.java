@@ -25,18 +25,15 @@ public class BaseCallbackApi<T> implements Callback<T> {
 
     protected BaseCallbackApi(Context context){
         this.context = context;
-
         /* Progress */
-        dialog = Util.loadingDialog(context);
-        dialog.show();
+        startLoading(context);
     }
 
     protected BaseCallbackApi(Context context, boolean isLogin){
         this.context = context;
         this.isLogin = isLogin;
         /* Progress */
-        dialog = Util.loadingDialog(context);
-        dialog.show();
+        startLoading(context);
     }
 
     @Override
@@ -83,5 +80,10 @@ public class BaseCallbackApi<T> implements Callback<T> {
             intent.putExtra("message", "Verifique seu acesso a internet ou tente novamente mais tarde.");
             context.startActivity(intent);
         }
+    }
+
+    private void startLoading(Context context){
+        dialog = Util.loadingDialog(context);
+        dialog.show();
     }
 }
