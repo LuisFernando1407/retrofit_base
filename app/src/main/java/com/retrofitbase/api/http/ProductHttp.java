@@ -22,9 +22,8 @@ public class ProductHttp extends Authenticated {
     public ProductHttp(Context context){
         this.context = context;
 
-        setupClient();
+        setupRetrofit();
     }
-
 
     public void index(){
         ApiServices services = retrofit.create(ApiServices.class);

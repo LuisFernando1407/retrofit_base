@@ -31,7 +31,7 @@ public class Authenticated {
         return chain.proceed(newRequest);
     }).connectTimeout(CONNECTION_TIMEOUT, TimeUnit.MINUTES).readTimeout(1, TimeUnit.MINUTES).build();
 
-    protected void setupClient() {
+    protected void setupRetrofit() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_API)
                 .client(client)

@@ -25,7 +25,7 @@ public class AuthHttp extends Authenticated {
     public AuthHttp(Context context){
         this.context = context;
 
-        setupClient();
+        setupRetrofit();
     }
 
     public void login(String email, String pass){
