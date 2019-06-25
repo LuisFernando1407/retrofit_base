@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.retrofitbase.R;
-import com.retrofitbase.api.rest.ProductHttp;
-import com.retrofitbase.api.rest.AuthHttp;
+import com.retrofitbase.api.http.ProductHttp;
+import com.retrofitbase.api.http.AuthHttp;
 import com.retrofitbase.util.Util;
 
 public class LoginActivity extends AppCompatActivity {

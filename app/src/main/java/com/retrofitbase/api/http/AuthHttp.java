@@ -1,10 +1,10 @@
-package com.retrofitbase.api.rest;
+package com.retrofitbase.api.http;
 
 import android.content.Context;
 
 import com.google.gson.JsonObject;
 import com.retrofitbase.api.BaseCallbackApi;
-import com.retrofitbase.api.http.AuthenticatedHttp;
+import com.retrofitbase.api.auth.Authenticated;
 import com.retrofitbase.api.response.LoginResponse;
 import com.retrofitbase.api.service.ApiServices;
 import com.retrofitbase.util.Util;
@@ -15,9 +15,9 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 
-public class AuthHttp extends AuthenticatedHttp {
+public class AuthHttp extends Authenticated {
      /*
-        Method: @Auth
+        Method: @AuthHttp
      */
 
     private final MediaType JSON = MediaType.parse("application/json");

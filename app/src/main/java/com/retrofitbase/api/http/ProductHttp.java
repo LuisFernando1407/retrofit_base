@@ -1,9 +1,9 @@
-package com.retrofitbase.api.rest;
+package com.retrofitbase.api.http;
 
 import android.content.Context;
 
 import com.retrofitbase.api.BaseCallbackApi;
-import com.retrofitbase.api.http.AuthenticatedHttp;
+import com.retrofitbase.api.auth.Authenticated;
 import com.retrofitbase.api.response.ProductsResponse;
 import com.retrofitbase.api.service.ApiServices;
 import com.retrofitbase.util.Util;
@@ -11,7 +11,7 @@ import com.retrofitbase.util.Util;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class ProductHttp extends AuthenticatedHttp {
+public class ProductHttp extends Authenticated {
 
      /*
         Method: @Resource

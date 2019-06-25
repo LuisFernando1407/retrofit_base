@@ -1,4 +1,4 @@
-package com.retrofitbase.api.http;
+package com.retrofitbase.api.auth;
 
 import android.content.Context;
 import com.retrofitbase.Constants;
@@ -11,7 +11,7 @@ import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class AuthenticatedHttp {
+public class Authenticated {
 
     protected Retrofit retrofit;
     protected Context context;
