@@ -26,31 +26,25 @@ public class BaseCallbackApi<T> implements Callback<T> {
     protected BaseCallbackApi(Context context){
         this.context = context;
         /* Progress */
-        startLoading(context);
+        OnStartLoading(context);
     }
 
     protected BaseCallbackApi(Context context, boolean isLogin){
         this.context = context;
         this.isLogin = isLogin;
         /* Progress */
-        startLoading(context);
+        OnStartLoading(context);
     }
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
-        if(dialog.isShowing()){
-            dialog.dismiss();
-        }
-
+        OnStopLoading();
         alertStatusCode(response.code());
     }
 
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-        if(dialog.isShowing()){
-            dialog.dismiss();
-        }
-
+        OnStopLoading();
         whenConnectTimeOut(t);
     }
 
@@ -82,7 +76,13 @@ public class BaseCallbackApi<T> implements Callback<T> {
         }
     }
 
-    private void startLoading(Context context){
+    private void OnStopLoading(){
+        if(dialog.isShowing()){
+            dialog.dismiss();
+        }
+    }
+
+    private void OnStartLoading(Context context){
         dialog = Util.loadingDialog(context);
         dialog.show();
     }
