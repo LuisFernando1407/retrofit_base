@@ -4,42 +4,32 @@ import android.content.Context;
 
 import com.google.gson.JsonObject;
 import com.retrofitbase.api.BaseCallbackApi;
-import com.retrofitbase.api.auth.Authenticated;
+import com.retrofitbase.api.request.ApiRequest;
 import com.retrofitbase.api.response.LoginResponse;
-import com.retrofitbase.api.service.ApiServices;
 import com.retrofitbase.util.Util;
-
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Response;
 
 
-public class AuthHttp extends Authenticated {
-     /*
-        Method: @AuthHttp
-     */
+public class AuthHttp {
 
-    private final MediaType JSON = MediaType.parse("application/json");
+    private ApiRequest request;
+    private Context context;
 
     public AuthHttp(Context context){
         this.context = context;
 
-        setupRetrofit();
+        request = new ApiRequest();
     }
 
-    public void login(String email, String pass){
-
-        ApiServices services = retrofit.create(ApiServices.class);
+    public void login(String cpf, String pass){
 
         JsonObject auth = new JsonObject();
-
-        auth.addProperty("email", email);
+        auth.addProperty("username", cpf);
         auth.addProperty("password", pass);
 
-        RequestBody body = RequestBody.create(JSON, auth.toString());
+        Call<LoginResponse> callLogin = request.getServices().login(request.setBody(auth));
 
-        Call<LoginResponse> callLogin = services.login(body);
         callLogin.enqueue(new BaseCallbackApi<LoginResponse>(context, true){
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {

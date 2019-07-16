@@ -3,32 +3,26 @@ package com.retrofitbase.api.http;
 import android.content.Context;
 
 import com.retrofitbase.api.BaseCallbackApi;
-import com.retrofitbase.api.auth.Authenticated;
+import com.retrofitbase.api.request.ApiRequest;
 import com.retrofitbase.api.response.ProductsResponse;
-import com.retrofitbase.api.service.ApiServices;
 import com.retrofitbase.util.Util;
 
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class ProductHttp extends Authenticated {
+public class ProductHttp {
 
-     /*
-        Method: @Resource
-     */
-
+    private ApiRequest request;
     private Context context;
 
     public ProductHttp(Context context){
         this.context = context;
 
-        setupRetrofit();
+        request = new ApiRequest();
     }
 
     public void index(){
-        ApiServices services = retrofit.create(ApiServices.class);
-
-        Call<ProductsResponse> callProducts = services.products();
+        Call<ProductsResponse> callProducts = request.getServices().products();
 
         callProducts.enqueue(new BaseCallbackApi<ProductsResponse>(context){
             @Override
